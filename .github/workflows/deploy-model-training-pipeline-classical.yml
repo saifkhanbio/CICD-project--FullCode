@@ -17,13 +17,7 @@ jobs:
     steps:
       - name: Create Azure ML Compute Cluster
         run: |
-          az ml compute create --name cpu-cluster \
-            --size Standard_DS11_v2 \
-            --min-instances 0 \
-            --max-instances 1 \
-            --type AmlCompute \
-            --resource-group ${{ needs.get-config.outputs.resource_group }} \
-            --workspace-name ${{ needs.get-config.outputs.aml_workspace }}
+          az ml compute create --name cpu-cluster --size Standard_DS11_v2 --min-instances 0 --max-instances 1 --cluster_tier Dedicated --resource-group ${{ needs.get-config.outputs.resource_group }} --workspace-name ${{ needs.get-config.outputs.aml_workspace }}
         env:
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
