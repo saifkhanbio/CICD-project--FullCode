@@ -1,6 +1,6 @@
 name: deploy-model-training-pipeline
 
-on: 
+on:
   workflow_dispatch:
 jobs:
   get-config:
