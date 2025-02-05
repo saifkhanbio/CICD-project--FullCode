@@ -46,7 +46,6 @@ jobs:
       data_file: mlops/azureml/train/data.yml
     secrets:
       creds: ${{ secrets.AZURE_CREDENTIALS }}
-
   register-environment:
     needs: get-config
     uses: Azure/mlops-templates/.github/workflows/register-environment.yml@main
@@ -57,7 +56,6 @@ jobs:
       conda_file: data-science/environment/train-conda.yml
     secrets:
       creds: ${{ secrets.AZURE_CREDENTIALS }}
-
   run-pipeline:
     needs: [get-config, register-environment, create-compute, register-dataset]
     uses: Azure/mlops-templates/.github/workflows/run-pipeline.yml@main
