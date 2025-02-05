@@ -16,6 +16,14 @@ jobs:
     needs: get-config
     runs-on: ubuntu-20.04
     steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Enable Automatic Extension Installation
+        run: az config set extension.dynamic_install=yes_without_prompt
+
       - name: Create Azure ML Compute Cluster
         shell: bash
         run: |
@@ -24,10 +32,9 @@ jobs:
             --size Standard_DS11_v2 \
             --min-instances 0 \
             --max-instances 1 \
+            --cluster_tier Dedicated \
             --resource-group "${{ needs.get-config.outputs.resource_group }}" \
             --workspace-name "${{ needs.get-config.outputs.aml_workspace }}"
-        env:
-          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
   register-dataset:
     needs: get-config
