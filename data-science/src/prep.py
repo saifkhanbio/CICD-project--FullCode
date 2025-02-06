@@ -28,8 +28,8 @@ def main(args):  # Write the function name for the main data preparation logic
     '''Read, preprocess, split, and save datasets'''
     
     # Log arguments
-    logging.info(f"Input data path: {args.data}")
-    logging.info(f"Test-train ratio: {args.test_train_ratio}")
+    #logging.info(f"Input data path: {args.data}")
+    #logging.info(f"Test-train ratio: {args.test_train_ratio}")
     
     # Reading Data
     df = pd.read_csv(args.raw_data)
