@@ -46,6 +46,8 @@ def main(args):  # Write the function name for the main data preparation logic
     
     # Save train and test data
     # Step 3: Save the training and testing datasets as CSV files in separate directories for easier access and organization.
+    args.train_data="/tmp/train_data"
+    args.test_data="/tmp/test_data"
     os.makedirs(args.train_data, exist_ok=True)
     os.makedirs(args.test_data, exist_ok=True)
     
@@ -63,8 +65,7 @@ if __name__ == "__main__":
 
     # Parse Arguments
     args = parse_args()  # Call the function to parse arguments
-    #args.train_data = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/train_data')
-    #args.test_data = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/test_data')
+   
     
     lines = [
         f"Raw data path: {args.raw_data}",  # Print the raw_data path
