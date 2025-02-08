@@ -35,6 +35,8 @@ def main(args):
 
     # Step 2: Read the train and test datasets from the provided paths using pandas. Replace '_______' with appropriate file paths and methods.
     # Read train and test data from CSV
+    args.train_data="/tmp/train_data"
+    args.test_data="/tmp/test_data"
     train_df = pd.read_csv(Path(args.train_data)/"train.csv")
     test_df = pd.read_csv(Path(args.test_data)/"test.csv")
     # Step 3: Split the data into features (X) and target (y) for both train and test datasets. Specify the target column name. 
