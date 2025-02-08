@@ -63,12 +63,13 @@ if __name__ == "__main__":
 
     # Parse Arguments
     args = parse_args()  # Call the function to parse arguments
-    train_data_dir = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/train_data')
-    test_data_dir = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/test_data')
+    args.train_data = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/train_data')
+    args.test_data = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/test_data')
+    
     lines = [
         f"Raw data path: {args.raw_data}",  # Print the raw_data path
-        f"Train dataset output path: {train_data_dir}",  # Print the train_data path
-        f"Test dataset path: {test_data_dir}",  # Print the test_data path
+        f"Train dataset output path: {args.train_data}",  # Print the train_data path
+        f"Test dataset path: {args.test_data}",  # Print the test_data path
         f"Test-train ratio: {args.test_train_ratio}",  # Print the test_train_ratio
     ]
 
