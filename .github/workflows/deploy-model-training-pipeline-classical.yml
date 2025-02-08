@@ -1,6 +1,5 @@
 name: deploy-model-training-pipeline-classical
 
-
 on:
   push:
     branches:
