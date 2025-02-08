@@ -46,10 +46,15 @@ def main(args):  # Write the function name for the main data preparation logic
     
     # Save train and test data
     # Step 3: Save the training and testing datasets as CSV files in separate directories for easier access and organization.
-    os.makedirs(args.train_data, exist_ok=True)
-    os.makedirs(args.test_data, exist_ok=True)
-    train_df.to_csv(os.path.join(args.train_data, "train.csv"), index=False)
-    test_df.to_csv(os.path.join(args.test_data, "test.csv"), index=False)
+    #os.makedirs(args.train_data, exist_ok=True)
+    #os.makedirs(args.test_data, exist_ok=True)
+    train_data_dir = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/train_data')
+    test_data_dir = os.getenv('AZUREML_OUTPUT_DIR', '/tmp/test_data')
+    os.makedirs(train_data_dir, exist_ok=True)
+    os.makedirs(test_data_dir, exist_ok=True)
+    
+    train_df.to_csv(os.path.join(train_data_dir, "train.csv"), index=False)
+    test_df.to_csv(os.path.join(test_data_dir, "test.csv"), index=False)
 
     # Log the metrics
     # Step 4: Log the number of rows in the training and testing datasets as metrics for tracking and evaluation. 
@@ -64,8 +69,8 @@ if __name__ == "__main__":
 
     lines = [
         f"Raw data path: {args.raw_data}",  # Print the raw_data path
-        f"Train dataset output path: {args.train_data}",  # Print the train_data path
-        f"Test dataset path: {args.test_data}",  # Print the test_data path
+        f"Train dataset output path: {train_data_dir}",  # Print the train_data path
+        f"Test dataset path: {test_data_dir}",  # Print the test_data path
         f"Test-train ratio: {args.test_train_ratio}",  # Print the test_train_ratio
     ]
 
