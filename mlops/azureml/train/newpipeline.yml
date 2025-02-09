@@ -36,8 +36,10 @@ jobs:
     inputs:
       raw_data: ${{parent.inputs.raw_data}}
     outputs:
-      train_data: ${{parent.outputs.train_data}}
-      test_data: ${{parent.outputs.test_data}}
+      train_data: "/tmp/train_data"
+      test_data: "/tmp/test_data"
+      #train_data: ${{parent.outputs.train_data}}
+      #test_data: ${{parent.outputs.test_data}}
       
 
   sweep_step:
