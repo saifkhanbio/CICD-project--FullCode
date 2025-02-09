@@ -46,8 +46,8 @@ def main(args):  # Write the function name for the main data preparation logic
     
     # Save train and test data
     # Step 3: Save the training and testing datasets as CSV files in separate directories for easier access and organization.
-    args.train_data="/tmp/train_data"
-    args.test_data="/tmp/test_data"
+    #args.train_data="/tmp/train_data"
+    #args.test_data="/tmp/test_data"
     os.makedirs(args.train_data, exist_ok=True)
     os.makedirs(args.test_data, exist_ok=True)
     
